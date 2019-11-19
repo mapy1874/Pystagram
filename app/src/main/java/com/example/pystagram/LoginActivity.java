@@ -21,13 +21,14 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             // do stuff with the user
             goMainActivity();
         } else {
             // show the signup or login screen
-            super.onCreate(savedInstanceState);
+            // super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
             etPassword = findViewById(R.id.etPassword);
             etUsername = findViewById(R.id.etUsername);
