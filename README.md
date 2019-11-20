@@ -2,9 +2,7 @@
 
 **Pystagram** is a photo sharing app similar to Instagram but using Parse as its backend.
 
-Time spent: **9** hours spent in total
-
-## User Stories
+Time spent: **20** hours spent in total
 
 The following **required** functionality is completed:
 
@@ -12,22 +10,29 @@ The following **required** functionality is completed:
 - [x] User can log in and log out of his or her account.
 - [x] The current signed in user is persisted across app restarts.
 - [x] User can take a photo, add a caption, and post it to "Instagram".
+- [x] User can view the last 20 posts submitted to "Instagram".
+- [x] User can pull to refresh the last 20 posts submitted to "Instagram".
+- [x] The user should switch between different tabs - viewing all posts (feed view), capture (camera and photo gallery view) and profile tabs (posts made) using fragments and a Bottom Navigation View. (2 points)
 
 The following **optional** features are implemented:
 
-- [ ] User sees app icon in home screen and styled bottom navigation view
-- [ ] Style the feed to look like the real Instagram feed.
-- [ ] After the user submits a new post, show an indeterminate progress bar while the post is being uploaded to Parse.
-
-The following **additional** features are implemented:
-
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Style the feed to look like the real Instagram feed.
+- [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
+- [ ] Show the username and creation time for each post.
+- [ ] User can tap a post to view post details, including timestamp and caption.
+- [ ] User Profiles
+      - [ ] Allow the logged in user to add a profile photo
+      - [x] Display the profile photo with each post
+- [x] Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts
+- [ ] User can comment on a post and see all comments for each post in the post details screen.
+- [ ] User can like a post and see number of likes for each post in the post details screen.
+- [ ] Run your app on your phone and use a custom camera view
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/mapy1874/Pystagram/blob/master/PystagramWalkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/mapy1874/Pystagram/blob/master/PystagramWalkthrough2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
