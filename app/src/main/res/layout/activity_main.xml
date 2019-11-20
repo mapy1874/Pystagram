@@ -4,13 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        app:contentInsetLeft="10dp"
+        app:contentInsetStart="10dp"
+        android:background="?attr/colorPrimary">
+    </androidx.appcompat.widget.Toolbar>
+
     <FrameLayout
-        android:id= "@+id/flContainer"
+        android:id="@+id/flContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation">
+        android:layout_above="@id/bottom_navigation"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="0dp">
 
     </FrameLayout>
 

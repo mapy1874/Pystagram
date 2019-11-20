@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:labelVisibilityMode="unlabeled"
+    app:itemIconTint="@android:color/black"
+    app:itemTextColor="@android:color/black"
+    app:itemBackground="@android:color/black"
+    >
+
     <item
+        android:title="Home"
         android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="Home"
         app:showAsAction="ifRoom" />
+
+
     <item
         android:id="@+id/action_compose"
         android:enabled="true"

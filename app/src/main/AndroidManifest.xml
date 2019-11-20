@@ -8,9 +8,9 @@
         android:usesCleartextTraffic="true"
         android:name=".ParseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_ins"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_ins"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- make sure within the application tag, otherwise app will crash with XmlResourceParser errors -->

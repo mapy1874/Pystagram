@@ -21,7 +21,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import com.example.pystagram.LoginActivity;
 import com.example.pystagram.Post;
 import com.example.pystagram.R;
 import com.parse.ParseException;
@@ -39,9 +38,8 @@ public class ComposeFragment extends Fragment {
     public String photoFileName = "photo.jpg";
     private File photoFile;
     private EditText etDescription;
-    private Button btnCaptureImage;
     private Button btnSubmit;
-    private Button btnLogout;
+    //private Button btnLogout;
     private ImageView ivPostImage;
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
@@ -57,12 +55,19 @@ public class ComposeFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        onLaunchCamera();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
         etDescription = view.findViewById(R.id.etDescription);
-        btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
+        //btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
-        btnLogout = view.findViewById(R.id.btnLogout);
+        //btnLogout = view.findViewById(R.id.btnLogout);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         // queryPosts();
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -77,24 +82,12 @@ public class ComposeFragment extends Fragment {
                 } else {
                     savePost(description, user, photoFile);
                 }
-            }
-        });
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseUser.logOut();
-                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
-                Intent intent = new Intent(getContext(), LoginActivity.class);
-                startActivity(intent);
-                // When working with fragments, instead of using this or refering
-                // to the context, always use getActivity(). You should call
-                getActivity().finish();
-            }
-        });
-        btnCaptureImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onLaunchCamera();
+                PostsFragment postsFragment= new PostsFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.flContainer, postsFragment, "postsFragment")
+                        .addToBackStack(null)
+                        .commit();
+
             }
         });
 
@@ -155,6 +148,11 @@ public class ComposeFragment extends Fragment {
                 ivPostImage.setImageBitmap(takenImage);
             } else { // Result was a failure
                 Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
+                PostsFragment postsFragment= new PostsFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.flContainer, postsFragment, "postsFragment")
+                        .addToBackStack(null)
+                        .commit();
             }
         }
     }

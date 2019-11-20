@@ -49,14 +49,12 @@ public class LoginActivity extends AppCompatActivity {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, ParseException e) {
                 if (e != null) {
-                    // TODO: Better error handling
                     CharSequence text = "Either your username or password is wrong, please try again!";
                     Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
                     Log.e(TAG,"Issue with login" );
                     e.printStackTrace();
                     return;
                 }
-                // TODO: Navigate to the new activity if the user signed properly
                 goMainActivity();
             }
         });

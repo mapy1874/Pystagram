@@ -12,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.pystagram.Post;
 import com.example.pystagram.R;
 import com.parse.ParseFile;
@@ -50,22 +53,34 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvHandle;
         private ImageView ivImage;
         private TextView tvDescription;
+        private ImageView ivProfileImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvHandle = itemView.findViewById(R.id.tvHandle);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
         }
 
         public void bind(Post post) {
-            //TODO: bind the view to the posts
             tvHandle.setText(post.getUser().getUsername());
             ParseFile image = post.getImage();
             if (image != null) {
                 Log.i(TAG, "loading image"+image.getUrl());
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
+            ParseFile profileImage = post.getUser().getParseFile("profileImage");
+            if (profileImage != null) {
+                Log.i(TAG, "loading profile image"+profileImage.getUrl());
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions = requestOptions.transforms(new CenterCrop(), new RoundedCorners(100000));
+                Glide.with(context).
+                        load(profileImage.getUrl()).
+                        apply(requestOptions).
+                        into(ivProfileImage);
+            }
+
             tvDescription.setText(post.getDescription());
         }
 
