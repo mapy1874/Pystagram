@@ -43,6 +43,10 @@ Describe any challenges encountered while building the app.
 - In ParseApplication, http://py-gram.herokuapp.com/parse does not work. I used https instead to solve the problem.
 - It took me a while to understand how to achieve the persistence part
 - Camera and file part is hard to understand, still trying to absolve these codes!
+- The posts page does not show photos at first. I added the following code to deal with that.      
+```xml
+      android:usesCleartextTraffic="true"
+```
 
 ## Open-source libraries used
 
